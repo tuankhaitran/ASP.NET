@@ -1,0 +1,153 @@
+﻿@model IEnumerable<EccomerceWeb.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Our Shop</h2>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+
+
+<section class="cat_product_area section_padding border_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="left_sidebar_area">
+                    <aside class="left_widgets p_filter_widgets sidebar_box_shadow">
+                        <div class="l_w_title">
+                            <h3>Browse Categories</h3>
+                        </div>
+                        <div class="widgets_inner">
+                            <ul class="list">
+                                <li>
+                                    <a href="#">Accessories</a>
+                                </li>
+                                <li class="sub-menu">
+                                    <a href="#Electronics" class=" d-flex justify-content-between">
+                                        Home Decoration
+                                        <div class="right ti-plus"></div>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Wallpaper</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Bedding</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Office</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Furniture</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Plants</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Traveling</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sports</a>
+                                </li>
+                                <li>
+                                    <a href="#">Handmade products</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <aside class="left_widgets p_filter_widgets sidebar_box_shadow">
+                        <div class="l_w_title">
+                            <h3>Product filters</h3>
+                        </div>
+                        <div class="widgets_inner">
+                            <ul class="list">
+                                <p>Categorized by Feel</p>
+                                <li>
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                    <a href="#">Modern</a>
+                                </li>
+                                <li>
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                    <a href="#">Vintage</a>
+                                </li>
+                                <li class="active">
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                    <a href="#">Classic</a>
+                                </li>
+                                <li>
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                    <a href="#">Retro</a>
+                                </li>
+                                <li>
+                                    <input type="radio" aria-label="Radio button for following text input">
+                                    <a href="#">Pop</a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product_top_bar d-flex justify-content-between align-items-center">
+                            <div class="single_product_menu product_bar_item">
+                                <h2>Womans (12)</h2>
+                            </div>
+                            <div class="product_top_bar_iner product_bar_item d-flex">
+                                <div class="product_bar_single">
+                                    <select class="wide">
+                                        <option data-display="Default sorting">Default sorting</option>
+                                        <option value="1">Price High to Low</option>
+                                        <option value="2">Price Low to High</option>
+                                    </select>
+                                </div>
+                                <div class="product_bar_single">
+                                    <select>
+                                        <option data-display="Show 12">Show 12</option>
+                                        <option value="1">Show 20</option>
+                                        <option value="2">Show 30</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach (var product in Model)
+                    {
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="single_category_product">
+                            <div class="single_category_img">
+                                <img src="@product.ImagePath" alt="">
+
+                                <div class="category_product_text">
+                                    <a href="single-product.html"><h5>@product.Name</h5></a>
+                                    <p>$@product.Price</p>
+                                    <a href="#" class="btn_1 ">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
