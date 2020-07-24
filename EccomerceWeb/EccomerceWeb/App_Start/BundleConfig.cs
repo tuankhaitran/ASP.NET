@@ -24,15 +24,19 @@ namespace EccomerceWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"
-                      ));
-
-            bundles.Add(new StyleBundle("~/Content/css/css").Include(
+                      "~/Content/site.css",
                        "~/Content/css/style.css",
                       "~/Content/css/styleabout.css",
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/all.css"
                       ));
+
+            //bundles.Add(new StyleBundle("~/Content/css/css").Include(
+            //           "~/Content/css/style.css",
+            //          "~/Content/css/styleabout.css",
+            //          "~/Content/css/bootstrap.min.css",
+            //          "~/Content/css/all.css"
+            //          ));
            
         }
     }

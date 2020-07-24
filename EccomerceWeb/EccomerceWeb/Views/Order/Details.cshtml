@@ -1,0 +1,95 @@
+﻿@model EccomerceWeb.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    
+
+<section class="confirmation_part section_padding">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                    <h4>order info</h4>
+                    <ul>
+                        <li>
+                            <p>Order ID</p><span> :@Model.OrderID</span>
+                        </li>
+                        <li>
+                            <p>data</p><span> :@String.Format("{0:MM/dd/yyyy}", Model.OrderDate)</span>
+                        </li>
+                        <li>
+                            <p>total</p><span>: $@Math.Round(Model.TotalPrice)</span>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-lx-4">
+                <div class="single_confirmation_details">
+                    <h4>Billing Address</h4>
+                    <ul>
+                        <li>
+                            <p>Street</p><span>: @Model.Address</span>
+                        </li>
+                        <li>
+                            <p>City</p><span>:  @Model.City</span>
+                        </li>
+                        <li>
+                            <p>State</p><span>: @Model.State</span>
+                        </li>
+                        <li>
+                            <p>Postcode</p><span>: @Model.Zip</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="order_details_iner">
+                    <h3>Order Details</h3>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <th colspan="2"><span>@item.Product.Name</span></th>
+                                    <th>x @item.Quantity</th>
+                                    <th> <span>$@(String.Format("{0:N0}",item.Price))</span></th>
+                                </tr>
+                            }
+
+                            <tr>
+                                <th colspan="3">Subtotal</th>
+                                <th> <span>$@(String.Format("{0:N0}", Model.TotalPrice))</span></th>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <p>
+                        @Html.ActionLink("   Back to List", "Index", "Order")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<!--================ confirmation part end =================-->
+<!-- subscribe_area part start-->
+ 

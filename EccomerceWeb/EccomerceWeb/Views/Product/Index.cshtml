@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<EccomerceWeb.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ProductIndex";
 }
 
 
@@ -135,14 +135,15 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="single_category_product">
                             <div class="single_category_img">
-                                <img src="@product.ImagePath" alt="">
+                                <a href="@Url.Action("Details", "Product", new { id = product.ProductID }, null)">
+                                    <img src="@product.ImagePath" alt=""></a>
 
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>@product.Name</h5></a>
-                                    <p>$@product.Price</p>
-                                    <a href="#" class="btn_1 ">Add to cart</a>
-                                </div>
-                            </div>
+                                    <div class="category_product_text">
+                                        <a href="@Url.Action("Details", "Product", new { id = product.ProductID }, null)"><h5>@product.Name</h5></a>
+                                        <p>$@Math.Round(product.Price, 2)</p>
+                                        <a href="@Url.Action("OrderNow","ShoppingCart", new { id = product.ProductID }, null)" class="btn_1">Add to cart</a>
+                                    </div>
+</div>
                         </div>
                     </div>
                     }

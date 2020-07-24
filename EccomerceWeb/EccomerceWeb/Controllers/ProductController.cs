@@ -3,6 +3,7 @@ using EccomerceWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,19 +12,13 @@ namespace EccomerceWeb.Controllers
     public class ProductController : Controller
     {
 
-        private TrendUpProductDbContext db = new TrendUpProductDbContext();
+        //TrendUpProductDbContext db = new TrendUpProductDbContext();
+        TrendUpEntities db = new TrendUpEntities();
         // GET: Product
         public ActionResult Index()
         {
-            var products = db.Products.ToList();
-            return View(products);
+            return View(db.Products.ToList());
 
-        }
-
-        // GET: Product/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Product/Create
@@ -41,11 +36,10 @@ namespace EccomerceWeb.Controllers
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    using (var context = new TrendUpProductDbContext())
-                    {
-                        context.Products.Add(product);
-                        context.SaveChanges();
-                    }
+                   
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    
                     return RedirectToAction("Index");
 
                 }
@@ -99,6 +93,21 @@ namespace EccomerceWeb.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Details(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+
         }
     }
 }
